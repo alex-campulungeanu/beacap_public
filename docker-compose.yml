@@ -1,0 +1,39 @@
+version: '3.8'
+
+x-dev:
+  &proxy_conf
+  http_proxy: "${HTTP_PROXY}"
+  https_proxy: "${HTTPS_PROXY}"
+
+services:
+  app:
+    container_name: beacap
+    image: node:16-buster-slim
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    restart: "no"
+    command: tail -f /dev/null
+    working_dir: /app
+  db:
+    container_name: beacap_db
+    image: postgres
+    environment:
+      << : *proxy_conf
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: beacap_db
+    volumes:
+    - db-data:/var/lib/postgresql/data
+    - ./sql/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+    ports:
+      - 54314:5432
+    restart: "no"
+      
+volumes:
+  db-data:
+    name: beacapdbvolume

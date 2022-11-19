@@ -1,0 +1,1 @@
+CREATE DATABASE beacap_db;

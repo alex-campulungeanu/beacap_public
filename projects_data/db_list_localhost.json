@@ -1,0 +1,20 @@
+[
+  {
+    "project": "localhost_false",
+    "username": "postgres",
+    "password": "postgress",
+    "database": "beacap_db",
+    "host": "beacap_db",
+    "port": "5432",
+    "exclude_tables": []
+  },
+  {
+    "project": "localhost_ok",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "beacap_db",
+    "host": "beacap_db",
+    "port": "5432",
+    "exclude_tables": []
+  }
+]

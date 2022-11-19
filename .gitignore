@@ -1,0 +1,5 @@
+backup_data/*
+!backup_data/.gitkeep
+projects_data/db_list_decrypted.json
+node_modules
+.env

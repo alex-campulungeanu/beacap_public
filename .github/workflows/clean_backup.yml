@@ -1,0 +1,25 @@
+name: Clean backups
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 2 * * *'
+
+env:
+  NODE_ENV: prod
+
+jobs:
+  backup:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Run clean script
+        run: npm run clean
+        env:
+          ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
+          PCLOUD_TOKEN: ${{ secrets.PCLOUD_TOKEN }}

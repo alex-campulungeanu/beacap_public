@@ -1,0 +1,21 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "download.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "backup": "node src/scripts/backup.js",
+    "clean": "node src/scripts/clean.js",
+    "encrypt": "NODE_ENV=prod node src/scripts/encrypt.js",
+    "decrypt": "NODE_ENV=prod node src/scripts/decrypt.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@getvim/execute": "^1.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.2",
+    "pcloud-sdk-js": "^2.0.0"
+  }
+}
